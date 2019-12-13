@@ -1,0 +1,17 @@
+select.custom-select option:focus, 
+select.custom-select option:active, 
+select.custom-select option:checked
+{
+    color: white;
+    background: linear-gradient(#1CC98A,#1CC98A);
+    background-color: #1CC98A !important; /* for IE */
+}
+
+select.page-link li:focus, 
+select.page-link li:active, 
+select.page-link li:checked
+{
+    color: white;
+    background: linear-gradient(#1CC98A,#1CC98A);
+    background-color: #1CC98A !important; /* for IE */
+}

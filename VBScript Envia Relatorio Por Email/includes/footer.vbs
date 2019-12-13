@@ -1,0 +1,2 @@
+qlik.Main
+qlik.Quit

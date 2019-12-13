@@ -1,0 +1,3 @@
+1-Copy and Paste "ControleEmailQlikGit" to "htdocs" if you using xampp and access by localhost
+
+2-Change "$dir" in "funcoes.php" line 5 to path where exists "acessos" created in vbs files

@@ -20,3 +20,5 @@
 
 6- TaskSchedule is a free version to you excute "QlikSend\ControleEmailQlik\src\VBScriptQlikSend\execute.bat"
    This bat will execute all *.vbs in directory automatically. So, in your scheduler just execute .bat
+
+7- Configure your SNMP in "QlikSend\ControleEmailQlik\src\VBScriptQlikSend\includes\fprintSend.vbs"

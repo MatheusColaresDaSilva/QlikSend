@@ -77,15 +77,15 @@ function sendEmail(ByVal document, ByVal sDir, ByVal strCurDate, ByVal NameQVW, 
      'Configuração Serve SMTP
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendusing") = 2 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate") = 1 
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserver") = "mail.santacasamaringa.com.br" 
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserverport") = 587
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendusername") = "ti.qlikview@santacasamaringa.com.br" 
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendpassword") = "indica@2020" 
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserver") = "XXXXXX" 
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserverport") = XXX
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendusername") = "XXXX@XXXX.com.br" 
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendpassword") = "XXXXXXX" 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpusessl") = 0 
      msgConf.Fields.Update  
   
      objMsg.To = email
-     objMsg.From = "ti.qlikview@santacasamaringa.com.br"
+     objMsg.From = "XXXX@XXXX.com.br"
      objMsg.Subject = "Relatórios extraidos do Qlikview" 
      objMsg.HTMLBody = "Email Qlikview Indicadores"
      objMsg.Sender = "Business Intelligence" 

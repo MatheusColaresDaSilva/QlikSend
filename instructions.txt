@@ -15,3 +15,8 @@
 
 4- In "Visualization.vbs" there is a Report, in each report exist a field Comment, the field we used do write the filter of report will make.
    It's like macro, but instead of "ActiveDocument" is "document"
+
+5- Pdf Create must be version 1.73
+
+6- TaskSchedule is a free version to you excute "QlikSend\ControleEmailQlik\src\VBScriptQlikSend\execute.bat"
+   This bat will execute all *.vbs in directory automatically. So, in your scheduler just execute .bat

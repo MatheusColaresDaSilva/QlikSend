@@ -57,7 +57,14 @@ function sendEmail(ByVal document, ByVal sDir, ByVal strCurDate, ByVal NameQVW, 
   Call getAllEmails (document, emails, arrayAllEmail, arrayAllEmailDistinct, arrayEmailReport ) 'Cria uma lista com todos os emails que receberam os arquivos
   
  For each email in arrayAllEmail
-  
+
+     If InStrRev(email, "|") > 0 Then
+     
+      configSend = Mid(email, InStrRev(email, "|") + 1)
+      email = Left(email, InStrRev(email, "|") - 1)
+ 
+     End If
+
      'Variaveis para acesso ao diretório
      Set fso = CreateObject("Scripting.FileSystemObject")     
      Set fldr = fso.GetFolder(sDir)
@@ -72,13 +79,13 @@ function sendEmail(ByVal document, ByVal sDir, ByVal strCurDate, ByVal NameQVW, 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpauthenticate") = 1 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserver") = "mail.santacasamaringa.com.br" 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpserverport") = 587
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendusername") = "ti.qlikview@XXX.com.br" 
-     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendpassword") = "" 
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendusername") = "ti.qlikview@santacasamaringa.com.br" 
+     msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/sendpassword") = "indica@2020" 
      msgConf.Fields.Item("http://schemas.microsoft.com/cdo/configuration/smtpusessl") = 0 
      msgConf.Fields.Update  
   
      objMsg.To = email
-     objMsg.From = "ti.qlikview@XXX.com.br"
+     objMsg.From = "ti.qlikview@santacasamaringa.com.br"
      objMsg.Subject = "Relatórios extraidos do Qlikview" 
      objMsg.HTMLBody = "Email Qlikview Indicadores"
      objMsg.Sender = "Business Intelligence" 
@@ -103,8 +110,13 @@ function sendEmail(ByVal document, ByVal sDir, ByVal strCurDate, ByVal NameQVW, 
           Loop
           objFile.Close
 
-          arrayEmailReport = Replace(arrayEmailReport, chr(10), "") 'Retira quebra de linha
-          arrayEmailReport = Split(arrayEmailReport,";")
+            arrayEmailReport = Replace(arrayEmailReport, chr(10), "") 'Retira quebra de linha
+            arrayEmailReport = Replace(arrayEmailReport, "|", "") 'Retira quebra de linha
+            arrayEmailReport = Replace(arrayEmailReport, "D", "") 'Retira quebra de linha
+            arrayEmailReport = Replace(arrayEmailReport, "S", "") 'Retira quebra de linha
+            arrayEmailReport = Replace(arrayEmailReport, "Q", "") 'Retira quebra de linha
+            arrayEmailReport = Replace(arrayEmailReport, "M", "") 'Retira quebra de linha
+            arrayEmailReport = Split(arrayEmailReport,";")
           
             If UBound(Filter(arrayEmailReport, email)) >= 0 Then 'Verifica se o email atual faz parte do escopo dos emails do relatório
             'Se sim, acha o arquivo gerado anteriormente com o nome corrensponde ao dia_app_relatorio.pdf em anexa no email
@@ -122,7 +134,23 @@ function sendEmail(ByVal document, ByVal sDir, ByVal strCurDate, ByVal NameQVW, 
     Set objMsg.Configuration = msgConf    
       ' Enviar 
     On error resume next
-      objMsg.Send 
+
+    if configSend = "D" Then
+      objMsg.Send
+    End If
+
+    if configSend = "S" and Weekday(Date,0) = 1 Then ' Se for domingo
+      objMsg.Send
+    End If
+
+    if configSend = "Q" and FormatDateTime(Date,2) = FormatDateTime("16/" & Month(date) & "/" & Year(Date),2) Then
+      objMsg.Send
+    End If
+
+    if configSend = "M" and FormatDateTime(Date,2) = FormatDateTime("04/" & Month(date) & "/" & Year(Date),2) Then
+      objMsg.Send
+    End If
+
     If Err <> 0 Then ' Se Email não existe
      On error goto 0
       'msgbox("Email Inválido")

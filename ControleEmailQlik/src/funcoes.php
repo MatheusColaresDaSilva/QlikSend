@@ -2,7 +2,7 @@
  
 $opcao = isset($_POST['opcao']) ? $_POST['opcao'] : '';
 
-$dir = 'C:\Users\mcs.silva\Desktop\SendEmailReportQlik\Vbs BackEnd\acessos';
+$dir = 'C:\xampp\htdocs\ControleEmailQlik\src\VBScriptQlikSend\acessos';
 
 if (!empty($opcao)){   
     switch ($opcao)

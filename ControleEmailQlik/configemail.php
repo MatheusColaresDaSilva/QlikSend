@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>Controle de Relatórios QlikView</title>
+  <link rel="sortcut icon" href="img/iconsheet.jpg" type="image/x-icon" />
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -32,7 +33,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-paper-plane"></i>
         </div>
@@ -91,25 +92,61 @@
       <!-- Main Content -->
       <div id="content">
 
-        <!-- Topbar -->
+         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-     		<!-- Page Heading -->
-          <h1 class="sidebar-brand-text mx-3 h3 text-success">Página Inicial</h1>
+          <!-- Page Heading -->
+          <h1 class="sidebar-brand-text mx-3 h3 text-success">Liberar Acessos</h1>
 
         </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
+          <div class="row">
+            <div class="col-4">
+              <label class="h5 text-gray-800">Selecione um Aplicação:</label>
+                <div id="folderprj" class="row mb-3">
+                  <div class="col-12">
+                    <select id="nameapp" size="5" style="width:350px;" class="custom-select custom-select-sm">
+                    </select>
+                  </div>
+                  
+                </div>
 
-            <!-- /.body -->
+
+              <label class="h5 text-gray-800">Selecione um Relatório:</label>
+                <div id="reports" class="row mb-3">
+                  <div class="col-12">
+                     <select id="namereport" size="5" style="width:350px;" class="namereport custom-select custom-select-sm">
+                     </select>
+                  </div>
+                  
+                </div>
+            </div>
+            <div class="col-4">
+              <label class="h5 text-gray-800" >Usuários Liberados:</label>
+                <div id="emails" class="row mb-3">
+                  <div class="col-12">
+                    <select id="emailreport" size="13" style="width:350px;" class="custom-select custom-select-sm">
+                    </select>
+                  </div>
+                </div>
+                <div class="row flex-row justify-content-end">
+                  <button class="btn btn-info" id="btnadd" type="button" disabled='disabled' style="margin:10px;">Adicionar</button>
+                  <button class="btn btn-warning" id="btnremove" type="button" disabled='disabled' style="margin:10px;">Remover</button>   
+                </div> 
+            </div>
+
+            
+          </div>
 
         </div>
         <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->
+
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
@@ -129,6 +166,7 @@
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
+
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
@@ -139,7 +177,7 @@
 
   <script src="js/sb_listeners.js"></script>
 
-   <!-- Page level plugins -->
+  <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 

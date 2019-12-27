@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,6 +10,7 @@
   <meta name="author" content="">
 
   <title>Controle de Relatórios QlikView</title>
+  <link rel="sortcut icon" href="img/iconsheet.jpg" type="image/x-icon" />
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -94,8 +95,8 @@
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-        <!-- Page Heading -->
-          <h1 class="sidebar-brand-text mx-3 h3 text-success">Relatório</h1>
+     		<!-- Page Heading -->
+          <h1 class="sidebar-brand-text mx-3 h3 text-success">Página Inicial</h1>
 
         </nav>
         <!-- End of Topbar -->
@@ -103,31 +104,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-                 <!-- DataTales Example -->
-          <div class="container-fluid">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-success">Relatório Acessos</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Aplicação</th>
-                      <th>Relatório</th>
-                      <th>Email</th>
-                    </tr>
-                  </thead>
-                <tbody>
-                <?php
-                   include './src/funcoes.php';
-                    echo popularTabela();    
-                ?>
-                </tbody>
-              </table>
-              </div>
-            </div>
-          </div>
+            <!-- /.body -->
 
         </div>
         <!-- /.container-fluid -->
@@ -169,8 +146,6 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-
-
 </body>
 
 </html>

@@ -3,6 +3,8 @@ public Function printSend (ByVal document, ByVal sDir, ByVal strCurDate, ByVal N
 
   for i = 0 to ri.Count-1 'for que vai de 0 até o número de relatório e salva e pdf cada um deles
       set r = ri.Item(i)  'Pega o relatório
+      set rep = document.GetDocReport(r.Id)
+      Execute rep.Comment
       call printPDF (document ,sDir, strCurDate, NameQVW, r.Name,r.Id) 'Salva em pdf    
   next    
    

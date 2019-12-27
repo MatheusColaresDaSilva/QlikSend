@@ -1,0 +1,17 @@
+1- Copy and Paste "ControleEmailQlik" to "htdocs" if you using xampp and access by localhost
+
+2- Change "$dir" in "ControleEmailQlik\src\funcoes.php" line 5 to path where exists "acessos" created in vbs files
+
+3- In directory VBScriptQlikSend existe a file named Visualization.vbs, this files *.vbs must have the same name of your application.qvw.
+  For example: There is a application called "Visualization.qvw", and the file .vbs know witch app it's must exec because it's have the same name.
+
+3.1- To create a new vbs. just copy and paste "Visualization.vbs" and change the name to the same name of your new application.
+
+3.2- In all .vbs there is:
+  	sDirInclude = ".\includes\"  -> Directory of includes (Recommended not to change)
+	sDirAplicacao = "..\..\..\Aplicacao\" -> Directory where your app stay
+	sDirAcesso = ".\acessos\" -> Directory of access, emails by reports (Recommended not to change)
+	sDirSaveReport = "C:\Users\mcs.silva\Desktop\matheus\QlikSend\QlikSend\Reports\" -> Directory where you will save the .pdf
+
+4- In "Visualization.vbs" there is a Report, in each report exist a field Comment, the field we used do write the filter of report will make.
+   It's like macro, but instead of "ActiveDocument" is "document"

@@ -1,16 +1,54 @@
-(function($) {
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+</head>
+<body>
+
+<label>Selecione um Aplicação:</label>
+  <div id="folderprj">
+    <select id="nameapp" style="width:300px;">
+    </select>
+  </div>
+<br>
+
+<label>Selecione um Relatório:</label>
+  <div id="reports">
+    <select id="namereport" style="width:300px;">
+    </select>
+  </div>
+<br>
+
+<label>Usuários Liberados:</label>
+  <div id="emails">
+    <select id="emailreport" size="10" style="width:300px;">
+    </select>
+    
+    <div>
+     <button id="btnadd" type="button" disabled='disabled'>Adicionar</button>  
+     <button id="btnremove" type="button" disabled='disabled'>Remover</button>  
+    </div>
+  
+  </div>
+<br>
+
+<script type="text/javascript">
+  
 $(document).ready(function() {
-    console.log('nois');
     
     jQuery.ajax({
       type: 'POST',
-      url: './src/funcoes.php',
+      url: 'funcoes.php',
       data: {opcao: 'folder'},
 
       success: function (obj) {
          $('#nameapp').html('<option value="" selected="selected">Nenhum</option>'+ obj).show();
        }
-    });
+    });  
+
 
     $('#nameapp').change(function(e){
 
@@ -18,11 +56,10 @@ $(document).ready(function() {
         $('#btnadd').prop('disabled', true);
         $('#btnremove').prop('disabled', true);
       } 
-     
 
       jQuery.ajax({
         type: 'POST',
-        url: './src/funcoes.php',
+        url: 'funcoes.php',
         data: {opcao: 'report', file: $('#nameapp').val() },
 
         success: function (obj) {
@@ -33,7 +70,7 @@ $(document).ready(function() {
 
       jQuery.ajax({
         type: 'POST',
-        url: './src/funcoes.php',
+        url: 'funcoes.php',
         data: {opcao: 'emailapp', file: $('#nameapp').val() },
 
         success: function (obj) {
@@ -58,7 +95,7 @@ $(document).ready(function() {
 
       jQuery.ajax({
         type: 'POST',
-        url: './src/funcoes.php',
+        url: 'funcoes.php',
         data:{opcao: 'emailreport' , file: $('#nameapp').val(),  report: $('#namereport').val()},
     
         success: function(obj){
@@ -68,6 +105,7 @@ $(document).ready(function() {
       })
 
     })
+
 
     $('#btnadd').click(function(e){
 
@@ -95,7 +133,7 @@ $(document).ready(function() {
 
         jQuery.ajax({
           type:'POST',
-          url:'./src/funcoes.php',
+          url:'funcoes.php',
           data: {opcao: 'modifyEmail', emailsend: stremails, file: $('#nameapp').val(),  report: $('#namereport').val()},
 
           success: function(obj){
@@ -133,7 +171,7 @@ $(document).ready(function() {
 
           jQuery.ajax({
             type:'POST',
-            url:'./src/funcoes.php',
+            url:'funcoes.php',
             data: {opcao: 'modifyEmail', emailsend: stremails, file: $('#nameapp').val(),  report: $('#namereport').val()},
 
             success: function(obj){
@@ -146,6 +184,10 @@ $(document).ready(function() {
      }
      
     })
+  
+});
 
-  })
-}) (jQuery); 
+  
+</script>
+</body>
+</html>

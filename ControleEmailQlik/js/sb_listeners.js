@@ -10,7 +10,7 @@ $(document).ready(function() {
        }
     })
     
-	$('#nameapp').change(function(e){
+  $('#nameapp').change(function(e){
 
       if($(this).val() == ""){
         $('#btnadd').prop('disabled', true);
@@ -85,21 +85,34 @@ $(document).ready(function() {
         alert("Digite um email Válido");
       }
      else {
-
-        emails.push(email);
-        stremails = emails.join([separador = ';']) +';';
-
-        jQuery.ajax({
-          type:'POST',
-          url:'./src/funcoes.php',
-          data: {opcao: 'modifyEmail', emailsend: stremails, file: $('#nameapp').val(),  report: $('#namereport').val()},
-
-          success: function(obj){
-
-            $('#namereport').change();
+          
+        var configEnvio = prompt("D-Diário, S-Semanal, Q-Quinzenal, M-Mensal");
+        configEnvio = configEnvio.toUpperCase();
+        
+        if(configEnvio === null){
+          return;
+         }
+         else if (configEnvio == null || (configEnvio != "D" && configEnvio != "S" && configEnvio != "Q" && configEnvio != "M")) {
+            alert("Digite uma opção Válida");
           }
+         else {
 
-        })
+          email = email+"|"+configEnvio;
+          emails.push(email);
+          stremails = emails.join([separador = ';']) +';';
+
+          jQuery.ajax({
+            type:'POST',
+            url:'./src/funcoes.php',
+            data: {opcao: 'modifyEmail', emailsend: stremails, file: $('#nameapp').val(),  report: $('#namereport').val()},
+
+            success: function(obj){
+
+              $('#namereport').change();
+            }
+
+          })
+         }  
 
       }
     
@@ -144,4 +157,4 @@ $(document).ready(function() {
     })
 
   })
-}) (jQuery); 
+}) (jQuery);

@@ -39,7 +39,14 @@ Class QlikView
   end function
 
   public Function open(ByVal docName, Byval sDirSaveReport)
+    
     setDocument(docName)
+    
+    Dim oFSO
+    Set oFSO = CreateObject("Scripting.FileSystemObject")
+       
+    If oFSO.FileExists(m_docName) Then
+      
     set m_App  = CreateObject("QlikTech.QlikView")
     set m_Doc = app.OpenDoc(m_docName,"admin","indica@2017")
     NameQVW  = left(m_Doc.Name , len(m_Doc.Name )-4)
@@ -47,6 +54,8 @@ Class QlikView
     srchRight = ".pdf"
     sDir = sDirSaveReport
   
+    End If
+
   end Function
 
   public Function Main
